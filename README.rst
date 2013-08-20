@@ -1,57 +1,52 @@
-======================
 cookiecutter-pypackage
 ======================
 
-Cookiecutter template for a Python package. See https://github.com/audreyr/cookiecutter.
+A python package template, for use with `cookiecutter <https://github.com/audreyr/cookiecutter>`_.
 
-* Free software: BSD license
-* Vanilla testing setup with `unittest` and `python setup.py test`
-* Travis-CI_: Ready for Travis Continuous Integration testing
-* Tox_ testing: Setup to easily test for Python 2.6, 2.7, 3.3
-* Sphinx_ docs: Documentation ready for generation with, for example, ReadTheDocs_
+Closely follows the structure of `TextBlob <https://github.com/sloria/textblob>`_, MIT License and all.
 
-Usage
------
+Features
+--------
 
-Generate a Python package project::
+- nose_ for testing. Includes a test runner script (``run_tests.py``).
+- Beautiful Sphinx docs, courtesy of `Kenneth Reitz <https://github.com/kennethreitz/kr-sphinx-themes>`_ .
+- ``setup.py`` script with useful commands for publishing to the PyPI.
+- wheel_!
+- tox and Travis-CI working out-of-the-box.
+- Starter ``compat.py`` module for Python 2 and 3 compatibility.
 
-    cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git
 
-Then:
+.. _wheel: http://www.python.org/dev/peps/pep-0427/
 
-* Create a repo and put it there.
-* Add the repo to your Travis CI account.
-* Add the repo to your ReadTheDocs account + turn on the ReadTheDocs service hook.
-* Release your package the standard Python way. Here's a release checklist: https://gist.github.com/audreyr/5990987
+.. _nose: https://nose.readthedocs.org/en/latest/
 
-Not Exactly What You Want?
---------------------------
 
-Don't worry, you have options:
+To use this template
+--------------------
+::
 
-Similar Cookiecutter Templates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    $ pip install cookiecutter
+    $ cookiecutter https://github.com/sloria/cookiecutter-pypackage.git
 
-* `Nekroze/cookiecutter-pypackage`_: A fork of this with a PyTest test runner,
-  strict flake8 checking with Travis/Tox, and some docs and `setup.py` differences.
+You will be prompted for basic info (your name, project name, etc.) which will be used in the template.
 
-Fork This
-~~~~~~~~~
+That's all you need to get started.
 
-If you have differences in your preferred setup, I encourage you to fork this
-to create your own version. Once you have your fork working, add it to the
-Similar Cookiecutter Templates list with a brief explanation. It's up to you
-whether or not to rename your fork.
-
-Or Submit a Pull Request
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-I also accept pull requests on this, if they're small, atomic, and if they
-make my own packaging experience better.
+Next steps
+----------
+* Create the Github repo for your project
+* Add the repo `Travis-CI`_.
+* Add the repo to `ReadTheDocs`_.
+* Release your package to the PyPI. Here's a release checklist: https://gist.github.com/sloria/6277657
 
 
 .. _Travis-CI: http://travis-ci.org/
 .. _Tox: http://testrun.org/tox/
 .. _Sphinx: http://sphinx-doc.org/
 .. _ReadTheDocs: https://readthedocs.org/
-.. _`Nekroze/cookiecutter-pypackage`: https://github.com/Nekroze/cookiecutter-pypackage
+
+
+License
+-------
+
+`MIT Licensed <http://sloria.mit-license.org>`_.

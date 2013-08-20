@@ -1,0 +1,25 @@
+<p class="home">
+{% raw %} <h1><a href="{{ pathto(master_doc) }}">{% endraw %}
+    {{cookiecutter.project_name}} Home</a></h1>
+</p>
+
+<p>
+  <iframe src="http://ghbtns.com/github-btn.html?user={{cookiecutter.github_username}}&repo={{cookiecutter.repo_name}}&type=watch&count=true&size=large"
+    allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+<p>
+{{cookiecutter.short_description}}
+</p>
+
+<h3>Useful Links</h3>
+<ul>
+  <li><a href="http://pypi.python.org/pypi/{{cookiecutter.repo_name}}">{{cookiecutter.project_name}} @ PyPI</a></li>
+  <li><a href="http://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}">{{cookiecutter.project_name}} @ GitHub</a></li>
+  <li><a href="http://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}/issues">Issue Tracker</a></li>
+</ul>
+
+<h3>Stay Informed</h3>
+
+<p><iframe src="http://ghbtns.com/github-btn.html?user={{cookiecutter.github_username}}&type=follow"
+  allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe></p>

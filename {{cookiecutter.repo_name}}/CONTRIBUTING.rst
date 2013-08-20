@@ -1,112 +1,106 @@
-============
-Contributing
-============
+Contributing guidelines
+=======================
 
-Contributions are welcome, and they are greatly appreciated! Every
-little bit helps, and credit will always be given. 
+In General
+----------
 
-You can contribute in many ways:
+- `PEP 8`_, when sensible.
+- Test ruthlessly. Write docs for new features.
+- Even more important than Test-Driven Development--*Human-Driven Development*.
 
-Types of Contributions
-----------------------
+.. _`PEP 8`: http://www.python.org/dev/peps/pep-0008/
 
-Report Bugs
-~~~~~~~~~~~
 
-Report bugs at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/issues.
+In Particular
+-------------
 
-If you are reporting a bug, please include:
+Questions, Feature Requests, Bug Reports, and Feedback. . .
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-* Your operating system name and version.
-* Any details about your local setup that might be helpful in troubleshooting.
-* Detailed steps to reproduce the bug.
+. . .should all be reported on the `Github Issue Tracker`_ .
 
-Fix Bugs
-~~~~~~~~
+.. _`Github Issue Tracker`: https://github.com/sloria/TextBlob/issues?state=open
 
-Look through the GitHub issues for bugs. Anything tagged with "bug"
-is open to whoever wants to implement it.
+Setting Up for Local Development
+++++++++++++++++++++++++++++++++
 
-Implement Features
-~~~~~~~~~~~~~~~~~~
+1. Fork `{{cookiecutter.project_name}}`_ on Github.
+2. Clone your fork::
 
-Look through the GitHub issues for features. Anything tagged with "feature"
-is open to whoever wants to implement it.
+    $ git clone git@github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}.git
 
-Write Documentation
-~~~~~~~~~~~~~~~~~~~
+3. Make your virtualenv and install dependencies. If you have virtualenv and virtualenvwrapper_, run::
 
-{{ cookiecutter.project_name }} could always use more documentation, whether as part of the 
-official {{ cookiecutter.project_name }} docs, in docstrings, or even on the web in blog posts,
-articles, and such.
+    $ mkvirtualenv {{cookiecutter.repo_name}}
+    $ cd {{cookiecutter.repo_name}}
+    $ pip install -r dev-requirements.txt
 
-Submit Feedback
-~~~~~~~~~~~~~~~
+- If you don't have virtualenv and virtualenvwrapper, you can install both using `virtualenv-burrito`_.
 
-The best way to send feedback is to file an issue at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/issues.
 
-If you are proposing a feature:
+Git Branch Structure
+++++++++++++++++++++
 
-* Explain in detail how it would work.
-* Keep the scope as narrow as possible, to make it easier to implement.
-* Remember that this is a volunteer-driven project, and that contributions
-  are welcome :)
+{{cookiecutter.project_name}} follows Vincent Driessen's `Successful Git Branching Model <http://http://nvie.com/posts/a-successful-git-branching-model/>`_ . In practice, the following branch conventions are used:
 
-Get Started!
-------------
+``dev``
+    The next release branch.
 
-Ready to contribute? Here's how to set up `{{ cookiecutter.repo_name }}` for local development.
+``master``
+    Current production release on PyPI.
 
-1. Fork the `{{ cookiecutter.repo_name }}` repo on GitHub.
-2. Clone your fork locally::
+Pull Requests
+++++++++++++++
 
-    $ git clone git@github.com:your_name_here/{{ cookiecutter.repo_name }}.git
+1. Create a new local branch. ::
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+    $ git checkout -b name-of-feature
 
-    $ mkvirtualenv {{ cookiecutter.repo_name }}
-    $ cd {{ cookiecutter.repo_name }}/
-    $ python setup.py develop
+2. Commit your changes. Write `good commit messages <http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html>`_.
 
-4. Create a branch for local development::
+    $ git commit -m "Detailed commit message"
+    $ git push origin name-of-feature
 
-    $ git checkout -b name-of-your-bugfix-or-feature
+2. Before submitting a pull request, check the following:
 
-Now you can make your changes locally.
+- If the pull request adds functionality, it should be tested and the docs should be updated.
+- The pull request should work on Python 2.6, 2.7, 3.3, and PyPy. Use ``tox`` to verify that it does.
 
-5. When you're done making changes, check that your changes pass flake8 and the
-tests, including testing other Python versions with tox::
+3. Submit a pull request to the ``dev`` branch.
 
-    $ flake8 {{ cookiecutter.repo_name }} tests
-	$ python setup.py test
+Running tests
++++++++++++++
+
+To run all the tests: ::
+
+    $ python run_tests.py
+
+To skip slow tests: ::
+
+    $ python run_tests fast
+
+To run tests on Python 2.6, 2.7, and 3.3 virtual environents: ::
+
     $ tox
 
-To get flake8 and tox, just pip install them into your virtualenv. 
 
-6. Commit your changes and push your branch to GitHub::
+Documentation
++++++++++++++
 
-    $ git add .
-    $ git commit -m "Your detailed description of your changes."
-    $ git push origin name-of-your-bugfix-or-feature
+Contributions to the documentation are welcome. Documentation is written in `reStructured Text`_ (rST). A quick rST reference can be found `here <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_. Builds are powered by Sphinx_.
 
-7. Submit a pull request through the GitHub website.
+To build docs: ::
 
-Pull Request Guidelines
------------------------
+    $ invoke build_docs -b
 
-Before you submit a pull request, check that it meets these guidelines:
+The ``-b`` (for "browse") automatically opens up the docs in your browser after building.
 
-1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
-3. The pull request should work for Python 2.6, 2.7, and 3.3, and for PyPy. Check 
-   https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/pull_requests
-   and make sure that the tests pass for all supported Python versions.
+.. _Sphinx: http://sphinx.pocoo.org/
 
-Tips
-----
+.. _`reStructured Text`: http://docutils.sourceforge.net/rst.html
 
-To run a subset of tests::
+.. _`virtualenv-burrito`: https://github.com/brainsik/virtualenv-burrito
 
-	$ python -m unittest tests.test_{{ cookiecutter.repo_name }}
+.. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org/en/latest/
+
+.. _`{{cookiecutter.project_name}}`: https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}
