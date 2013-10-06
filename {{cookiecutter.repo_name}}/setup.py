@@ -51,6 +51,7 @@ def find_version(fname):
                 break
     if not version:
         raise RuntimeError('Cannot find version information')
+    return version
 
 __version__ = find_version("{{ cookiecutter.repo_name }}/__init__.py")
 
