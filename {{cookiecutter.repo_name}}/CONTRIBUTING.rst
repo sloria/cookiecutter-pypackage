@@ -19,7 +19,7 @@ Questions, Feature Requests, Bug Reports, and Feedback. . .
 
 . . .should all be reported on the `Github Issue Tracker`_ .
 
-.. _`Github Issue Tracker`: https://github.com/sloria/TextBlob/issues?state=open
+.. _`Github Issue Tracker`: https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}/issues?state=open
 
 Setting Up for Local Development
 ++++++++++++++++++++++++++++++++

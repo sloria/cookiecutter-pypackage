@@ -16,7 +16,7 @@ From Source
 
 You can clone the public repo: ::
 
-    git clone https://github.com/sloria/TextBlob.git
+    git clone https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}.git
 
 Or download one of the following:
 
