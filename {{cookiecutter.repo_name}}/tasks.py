@@ -32,3 +32,7 @@ def build_docs(clean=False, browse=False):
     run("sphinx-build %s %s" % (docs_dir, build_dir), pty=True)
     if browse:
         browse_docs()
+
+@task
+def readme(browse=False):
+    run('rst2html.py README.rst > README.html')
