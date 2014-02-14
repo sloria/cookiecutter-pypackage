@@ -1,40 +1,9 @@
 # -*- coding: utf-8 -*-
 import re
 import sys
-import os
 import subprocess
 
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    from distutils.core import setup
-    from distutils.util import convert_path
-
-    def _find_packages(where='.', exclude=()):
-        """Return a list all Python packages found within directory 'where'
-
-        'where' should be supplied as a "cross-platform" (i.e. URL-style) path; it
-        will be converted to the appropriate local path syntax.  'exclude' is a
-        sequence of package names to exclude; '*' can be used as a wildcard in the
-        names, such that 'foo.*' will exclude all subpackages of 'foo' (but not
-        'foo' itself).
-        """
-        out = []
-        stack = [(convert_path(where), '')]
-        while stack:
-            where, prefix = stack.pop(0)
-            for name in os.listdir(where):
-                fn = os.path.join(where, name)
-                if ('.' not in name and os.path.isdir(fn) and
-                        os.path.isfile(os.path.join(fn, '__init__.py'))):
-                    out.append(prefix+name)
-                    stack.append((fn, prefix + name + '.'))
-        for pat in list(exclude)+['ez_setup', 'distribute_setup']:
-            from fnmatch import fnmatchcase
-            out = [item for item in out if not fnmatchcase(item, pat)]
-        return out
-
-    find_packages = _find_packages
+from setuptools import setup, find_packages
 
 
 def find_version(fname):
@@ -57,7 +26,7 @@ __version__ = find_version("{{ cookiecutter.repo_name }}/__init__.py")
 
 PUBLISH_CMD = "python setup.py register sdist bdist_wheel upload"
 TEST_PUBLISH_CMD = 'python setup.py register -r test sdist bdist_wheel upload -r test'
-TEST_CMD = 'python run_tests.py'
+TEST_CMD = 'py.test'
 
 if 'publish' in sys.argv:
     try:
@@ -79,9 +48,9 @@ if 'publish_test' in sys.argv:
 
 if 'run_tests' in sys.argv:
     try:
-        __import__('nose')
+        __import__('pytest')
     except ImportError:
-        print('nose required. Run `pip install nose`.')
+        print('pytest required. Run `pip install pytest`.')
         sys.exit(1)
 
     status = subprocess.call(TEST_CMD, shell=True)
@@ -122,5 +91,5 @@ setup(
         'Programming Language :: Python :: 3.3',
     ],
     test_suite='tests',
-    tests_require=['nose'],
+    tests_require=['pytest'],
 )
