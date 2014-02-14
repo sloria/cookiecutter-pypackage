@@ -8,7 +8,7 @@ Closely follows the structure of `TextBlob <https://github.com/sloria/textblob>`
 Features
 --------
 
-- nose_ for testing. Includes a test runner script (``run_tests.py``).
+- pytest_ for testing. Includes a test runner script (``run_tests.py``).
 - Beautiful Sphinx docs, courtesy of `Kenneth Reitz <https://github.com/kennethreitz/kr-sphinx-themes>`_ .
 - ``setup.py`` script with useful commands for publishing to the PyPI.
 - wheel_!
@@ -18,7 +18,7 @@ Features
 
 .. _wheel: http://www.python.org/dev/peps/pep-0427/
 
-.. _nose: https://nose.readthedocs.org/en/latest/
+.. _pytest: http://pytest.org/latest/
 
 
 To use this template

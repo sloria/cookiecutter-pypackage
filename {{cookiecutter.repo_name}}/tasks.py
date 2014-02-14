@@ -7,7 +7,7 @@ build_dir = os.path.join(docs_dir, '_build')
 
 @task
 def test():
-    run("python run_tests.py", pty=True)
+    run('python setup.py test', pty=True)
 
 @task
 def clean():

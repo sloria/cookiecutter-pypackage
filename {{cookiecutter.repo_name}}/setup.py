@@ -2,8 +2,27 @@
 import re
 import sys
 import subprocess
-
 from setuptools import setup, find_packages
+from setuptools.command.test import test as TestCommand
+
+
+REQUIRES = [
+
+]
+PUBLISH_CMD = "python setup.py register sdist bdist_wheel upload"
+TEST_PUBLISH_CMD = 'python setup.py register -r test sdist bdist_wheel upload -r test'
+
+
+class PyTest(TestCommand):
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        import pytest
+        errcode = pytest.main(self.test_args)
+        sys.exit(errcode)
 
 
 def find_version(fname):
@@ -24,9 +43,6 @@ def find_version(fname):
 
 __version__ = find_version("{{ cookiecutter.repo_name }}/__init__.py")
 
-PUBLISH_CMD = "python setup.py register sdist bdist_wheel upload"
-TEST_PUBLISH_CMD = 'python setup.py register -r test sdist bdist_wheel upload -r test'
-TEST_CMD = 'py.test'
 
 if 'publish' in sys.argv:
     try:
@@ -46,15 +62,6 @@ if 'publish_test' in sys.argv:
     status = subprocess.call(TEST_PUBLISH_CMD, shell=True)
     sys.exit()
 
-if 'run_tests' in sys.argv:
-    try:
-        __import__('pytest')
-    except ImportError:
-        print('pytest required. Run `pip install pytest`.')
-        sys.exit(1)
-
-    status = subprocess.call(TEST_CMD, shell=True)
-    sys.exit(status)
 
 def read(fname):
     with open(fname) as fp:
@@ -92,4 +99,6 @@ setup(
     ],
     test_suite='tests',
     tests_require=['pytest'],
+    cmdclass={'test': PyTest}
+
 )
