@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 import re
 import sys
-import subprocess
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 
 
 REQUIRES = [
+
 ]
 
 

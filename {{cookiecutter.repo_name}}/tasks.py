@@ -41,6 +41,7 @@ def readme(browse=False):
 
 @task
 def publish(test=False):
+    """Publish to the cheeseshop."""
     try:
         __import__('wheel')
     except ImportError:
