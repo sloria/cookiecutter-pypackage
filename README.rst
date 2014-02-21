@@ -3,12 +3,10 @@ cookiecutter-pypackage
 
 A python package template, for use with `cookiecutter <https://github.com/audreyr/cookiecutter>`_.
 
-Closely follows the structure of `TextBlob <https://github.com/sloria/textblob>`_, MIT License and all.
-
 Features
 --------
 
-- pytest_ for testing. Includes a test runner script (``run_tests.py``).
+- pytest_ for testing.
 - Beautiful Sphinx docs, courtesy of `Kenneth Reitz <https://github.com/kennethreitz/kr-sphinx-themes>`_ .
 - ``setup.py`` script with useful commands for publishing to the PyPI.
 - wheel_!
