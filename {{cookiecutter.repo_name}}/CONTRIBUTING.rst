@@ -73,11 +73,7 @@ Running tests
 
 To run all the tests: ::
 
-    $ python run_tests.py
-
-To skip slow tests: ::
-
-    $ python run_tests fast
+    $ invoke test
 
 To run tests on Python 2.6, 2.7, and 3.3 virtual environents: ::
 
@@ -91,7 +87,7 @@ Contributions to the documentation are welcome. Documentation is written in `reS
 
 To build docs: ::
 
-    $ invoke build_docs -b
+    $ invoke docs -b
 
 The ``-b`` (for "browse") automatically opens up the docs in your browser after building.
 
