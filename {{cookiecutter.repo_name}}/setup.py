@@ -58,9 +58,7 @@ setup(
     packages=find_packages(exclude=("test*", )),
     package_dir={'{{ cookiecutter.repo_name }}': '{{ cookiecutter.repo_name }}'},
     include_package_data=True,
-    install_requires=[
-
-    ],
+    install_requires=REQUIRES,
     license=read("LICENSE"),
     zip_safe=False,
     keywords='{{ cookiecutter.repo_name }}',
