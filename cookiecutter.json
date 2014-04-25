@@ -5,7 +5,5 @@
 	"project_name": "Python Boilerplate",
 	"repo_name": "boilerplate",
 	"short_description": "An Example Python Package",
-	"release_date": "2014-04-07",
-	"year": "2014",
 	"version": "0.1.0"
 }

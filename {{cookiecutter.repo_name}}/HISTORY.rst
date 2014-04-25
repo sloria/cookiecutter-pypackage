@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-{{ cookiecutter.version }} ({{ cookiecutter.release_date }})
+{{ cookiecutter.version }} (unreleased)
 ++++++++++++++++++
 
 * First release.
