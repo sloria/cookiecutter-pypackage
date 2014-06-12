@@ -12,6 +12,13 @@ def test():
     run('python setup.py test', pty=True)
 
 @task
+def watch():
+    """Run tests when a file changes."""
+    import pytest
+    errcode = pytest.main(['-f'])
+    sys.exit(errcode)
+
+@task
 def clean():
     run("rm -rf build")
     run("rm -rf dist")
