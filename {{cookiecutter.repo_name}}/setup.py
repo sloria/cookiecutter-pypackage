@@ -2,30 +2,10 @@
 import re
 import sys
 from setuptools import setup, find_packages
-from setuptools.command.test import test as TestCommand
-
 
 REQUIRES = [
 
 ]
-
-TEST_REQUIRES = [
-    'pytest'
-]
-
-class PyTest(TestCommand):
-    def finalize_options(self):
-        TestCommand.finalize_options(self)
-        self.test_args = [
-            '--verbose'
-        ]
-        self.test_suite = True
-
-    def run_tests(self):
-        import pytest
-        errcode = pytest.main(self.test_args)
-        sys.exit(errcode)
-
 
 def find_version(fname):
     """Attempts to find the version number in the file names fname.
@@ -79,8 +59,5 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
     ],
-    test_suite='tests',
-    tests_require=TEST_REQUIRES,
-    cmdclass={'test': PyTest}
-
+    test_suite='tests'
 )
