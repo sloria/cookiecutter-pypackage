@@ -23,7 +23,7 @@ def find_version(fname):
         raise RuntimeError('Cannot find version information')
     return version
 
-__version__ = find_version("{{ cookiecutter.repo_name }}/__init__.py")
+__version__ = find_version('{{ cookiecutter.repo_name }}/__init__.py')
 
 
 def read(fname):
@@ -35,8 +35,7 @@ setup(
     name='{{ cookiecutter.repo_name }}',
     version=__version__,
     description='{{ cookiecutter.short_description }}',
-    long_description=(read("README.rst") + '\n\n' +
-                        read("HISTORY.rst")),
+    long_description=read('README.rst'),
     author='{{ cookiecutter.full_name }}',
     author_email='{{ cookiecutter.email }}',
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}',
@@ -44,7 +43,7 @@ setup(
     package_dir={'{{ cookiecutter.repo_name }}': '{{ cookiecutter.repo_name }}'},
     include_package_data=True,
     install_requires=REQUIRES,
-    license=read("LICENSE"),
+    license=read('LICENSE'),
     zip_safe=False,
     keywords='{{ cookiecutter.repo_name }}',
     classifiers=[
