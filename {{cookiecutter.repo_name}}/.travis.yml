@@ -10,10 +10,10 @@ python:
   - "pypy"
 
 install:
-  - travis_retry pip install flake8 --upgrade
+  - pip install -U -r dev-requirements.txt
   - pip install -U .
 
 before_script:
     - flake8 .
 
-script: python setup.py test
+script: py.test
