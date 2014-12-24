@@ -13,7 +13,7 @@ def test():
 
 @task
 def watch():
-    """Run tests when a file changes."""
+    """Run tests when a file changes. Requires pytest-xdist."""
     import pytest
     errcode = pytest.main(['-f'])
     sys.exit(errcode)
@@ -30,15 +30,15 @@ def clean():
 def clean_docs():
     run("rm -rf %s" % build_dir)
 
+COMMAND_MAP = {
+    'darwin': 'open ',
+    'linux': 'idle ',
+    'win32': '',
+}
 @task
 def browse_docs():
     platform = str(sys.platform).lower()
-    command_map = {
-        'darwin': 'open ',
-        'linux': 'idle ',
-        'win32': '',
-    }
-    cmd = command_map.get(platform)
+    cmd = COMMAND_MAP.get(platform)
     if cmd:
         run("{0}{1}".format(cmd, os.path.join(build_dir, 'index.html')))
     else:

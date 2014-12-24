@@ -1,6 +1,9 @@
-pytest
-pytest-xdist
-tox>=1.5.0
-sphinx
-wheel
+# Build tasks
 invoke
+
+# Testing
+pytest
+tox>=1.5.0
+
+# Packaging
+wheel

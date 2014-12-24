@@ -7,12 +7,12 @@ Features
 --------
 
 - pytest_ for testing.
-- Beautiful Sphinx docs, courtesy of `Kenneth Reitz <https://github.com/kennethreitz/kr-sphinx-themes>`_ .
+- Sphinx docs using the responsive ReadTheDocs theme.
 - ``setup.py`` script with useful commands for publishing to the PyPI.
 - wheel_!
 - tox and Travis-CI working out-of-the-box.
 - Starter ``compat.py`` module for Python 2 and 3 compatibility.
-
+- invoke for build tasks
 
 .. _wheel: http://www.python.org/dev/peps/pep-0427/
 

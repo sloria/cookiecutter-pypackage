@@ -29,25 +29,32 @@ Setting Up for Local Development
 
     $ git clone git@github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}.git
 
-3. Make your virtualenv and install dependencies. If you have virtualenv and virtualenvwrapper_, run::
+3. Install development requirements. It is highly recommended that you use a virtualenv. ::
 
-    $ mkvirtualenv {{cookiecutter.repo_name}}
-    $ cd {{cookiecutter.repo_name}}
+    # After activating your virtualenv
     $ pip install -r dev-requirements.txt
 
-- If you don't have virtualenv and virtualenvwrapper, you can install both using `virtualenv-burrito`_.
+3. Install {{cookiecutter.repo_name}} in develop mode. ::
 
+   $ pip install -e .
 
 Git Branch Structure
 ++++++++++++++++++++
 
-{{cookiecutter.project_name}} follows Vincent Driessen's `Successful Git Branching Model <http://http://nvie.com/posts/a-successful-git-branching-model/>`_ . In practice, the following branch conventions are used:
+{{cookiecutter.repo_name}} abides by the following branching model:
+
 
 ``dev``
-    The next release branch.
+    Current development branch. **New features should branch off here**.
 
-``master``
+``pypi``
     Current production release on PyPI.
+
+``X.Y-line``
+    Maintenance branch for release ``X.Y``. **Bug fixes should be sent to the most recent release branch.**. The maintainer will forward-port the fix to ``dev``. Note: exceptions may be made for bug fixes that introduce large code changes.
+
+**Always make a new branch for your work**, no matter how small. Also, **do not put unrelated changes in the same branch or pull request**. This makes it more difficult to merge your changes.
+
 
 Pull Requests
 ++++++++++++++
@@ -85,7 +92,11 @@ Documentation
 
 Contributions to the documentation are welcome. Documentation is written in `reStructured Text`_ (rST). A quick rST reference can be found `here <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_. Builds are powered by Sphinx_.
 
-To build docs: ::
+To install the packages for building the docs: ::
+
+    $ pip install -r docs/requirements.txt
+
+To build the docs: ::
 
     $ invoke docs -b
 
@@ -94,8 +105,6 @@ The ``-b`` (for "browse") automatically opens up the docs in your browser after 
 .. _Sphinx: http://sphinx.pocoo.org/
 
 .. _`reStructured Text`: http://docutils.sourceforge.net/rst.html
-
-.. _`virtualenv-burrito`: https://github.com/brainsik/virtualenv-burrito
 
 .. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org/en/latest/
 
