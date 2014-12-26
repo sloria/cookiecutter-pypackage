@@ -9,7 +9,9 @@ build_dir = os.path.join(docs_dir, '_build')
 
 @task
 def test():
-    run('python setup.py test', pty=True)
+    import pytest
+    errcode = pytest.main(['tests'])
+    sys.exit(errcode)
 
 @task
 def watch():
