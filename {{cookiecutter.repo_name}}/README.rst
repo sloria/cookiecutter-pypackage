@@ -33,7 +33,7 @@ Project Links
 - Docs: http://{{cookiecutter.repo_name}}.rtfd.org/
 - Changelog: http://{{cookiecutter.repo_name}}.readthedocs.org/en/latest/changelog.html
 - PyPI: https://pypi.python.org/pypi/{{cookiecutter.repo_name}}
-- Issues: https://github.com/sloria/{{cookiecutter.repo_name}}/issues
+- Issues: https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}/issues
 
 License
 =======
