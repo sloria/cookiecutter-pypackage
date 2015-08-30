@@ -10,9 +10,15 @@ build_dir = os.path.join(docs_dir, '_build')
 
 @task
 def test():
+    flake()
     import pytest
     errcode = pytest.main(['tests'])
     sys.exit(errcode)
+
+@task
+def flake():
+    """Run flake8 on codebase."""
+    run('flake8 .', echo=True)
 
 @task
 def watch():
