@@ -31,7 +31,7 @@ def clean():
 
 @task
 def clean_docs():
-    run("rm -rf %s" % build_dir)
+    run("rm -rf %s" % build_dir, echo=True)
 
 @task
 def browse_docs():
@@ -43,7 +43,7 @@ def docs(clean=False, browse=False, watch=False):
     """Build the docs."""
     if clean:
         clean_docs()
-    run("sphinx-build %s %s" % (docs_dir, build_dir), pty=True)
+    run("sphinx-build %s %s" % (docs_dir, build_dir), echo=True)
     if browse:
         browse_docs()
     if watch:
@@ -64,7 +64,7 @@ def watch_docs():
 
 @task
 def readme(browse=False):
-    run("rst2html.py README.rst > README.html", pty=True)
+    run("rst2html.py README.rst > README.html", echo=True)
     if browse:
         webbrowser.open_new_tab('README.html')
 

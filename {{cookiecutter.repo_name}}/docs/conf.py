@@ -12,6 +12,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
+    'sphinx_issues',
 ]
 
 primary_domain = 'py'
@@ -20,6 +21,8 @@ default_role = 'py:obj'
 intersphinx_mapping = {
     'python': ('http://python.readthedocs.org/en/latest/', None),
 }
+
+issues_github_path = '{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}'
 
 source_suffix = '.rst'
 master_doc = 'index'
