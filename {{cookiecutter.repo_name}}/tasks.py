@@ -9,23 +9,25 @@ docs_dir = 'docs'
 build_dir = os.path.join(docs_dir, '_build')
 
 @task
-def test():
-    flake()
+def test(watch=False, last_failing=False):
+    """Run the tests.
+
+    Note: --watch requires pytest-xdist to be installed.
+    """
     import pytest
-    errcode = pytest.main(['tests'])
-    sys.exit(errcode)
+    flake()
+    args = []
+    if watch:
+        args.append('-f')
+    if last_failing:
+        args.append('--lf')
+    retcode = pytest.main(args)
+    sys.exit(retcode)
 
 @task
 def flake():
     """Run flake8 on codebase."""
     run('flake8 .', echo=True)
-
-@task
-def watch():
-    """Run tests when a file changes. Requires pytest-xdist."""
-    import pytest
-    errcode = pytest.main(['-f'])
-    sys.exit(errcode)
 
 @task
 def clean():
@@ -65,24 +67,22 @@ def watch_docs():
         print('Install it with:')
         print('    pip install sphinx-autobuild')
         sys.exit(1)
-    docs()
-    run('sphinx-autobuild {} {}'.format(docs_dir, build_dir), pty=True)
+    run('sphinx-autobuild {0} {1} --watch {2}'.format(
+        docs_dir, build_dir, 'marshmallow'), echo=True, pty=True)
 
 @task
 def readme(browse=False):
-    run("rst2html.py README.rst > README.html", echo=True)
+    run('rst2html.py README.rst > README.html')
     if browse:
         webbrowser.open_new_tab('README.html')
 
 @task
 def publish(test=False):
     """Publish to the cheeseshop."""
-    try:
-        __import__('wheel')
-    except ImportError:
-        print("wheel required. Run `pip install wheel`.")
-        sys.exit(1)
+    clean()
     if test:
-        run('python setup.py register -r test sdist bdist_wheel upload -r test', echo=True)
+        run('python setup.py register -r test sdist bdist_wheel', echo=True)
+        run('twine upload dist/* -r test', echo=True)
     else:
-        run('python setup.py register sdist bdist_wheel upload', echo=True)
+        run('python setup.py register sdist bdist_wheel', echo=True)
+        run('twine upload dist/*', echo=True)
